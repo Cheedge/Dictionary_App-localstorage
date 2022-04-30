@@ -1,0 +1,1 @@
+python mini_oop_wsgi_server_dictionary.py 8080 wsgi_app_frame_dictionary:application
