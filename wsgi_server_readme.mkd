@@ -1,0 +1,38 @@
+This is a mini Web Server use WSGI protocol
+
+1. mini_oop_wsgi_server_v**:
+	only use for communication with Browser and static/dynamic source
+2. dynamic/wsgi_app_frame_v**:
+	when Brower request for dynamic case, here means *.py(later will change)
+	then Server will turn for help here.
+	Let wsgi_app_frame to make the response BODY and return to Server
+3. server_source_path.conf:
+	store the static/dynamic source path to make Server to read
+4. run.sh:
+	run Server
+5. 
+
+About Dataset:
+
+This "German-English" dataset extract from some dictionary, but data is really
+massed up, so it need a lot of cleaning work:
+
+	+ verify the translation of each word (not scrutinize, quite sloopy)
+	+ rewrite the missed translations (done according to google)
+	+ add some notations (done)
+	+ specificate the formation of translations (done, not so carefully)
+	+ parse the (word, notation, translation) out (done, carefully)
+	+ total 81683 wrods
+
+TODO:
+
+	+ continue cleaning
+		- verification
+		- clean the special punctuations in orignal German words
+			* it is important and make it easy for searching!!!
+
+1. total dictionary:
+	+ id (primary key, increasing, int)
+	+ german(varchar 100)
+	+ english(varchar 300)
+	+ note(text)
