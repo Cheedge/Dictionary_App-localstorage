@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today Vocabulary</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/task_vocab.js"></script>
+</head>
+<body>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="task.html">Vocab Today</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="task.html">Today Vocabulary</a>
+              </li>
+            </ul>
+            <form class="d-flex" id="search_form">
+              <input class="form-control me-2" type="search" placeholder="Google Search" aria-label="Search">
+              <button class="btn btn-light" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div class="d-grid gap-1">
+        <div class="p-2 bg-light border">Today's gole is 100!!!</div>
+      </div>
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-remember-tab" data-bs-toggle="tab" data-bs-target="#nav-remember" type="button" role="tab" aria-controls="nav-remember" aria-selected="true">Remember List</button>
+          <button class="nav-link" id="nav-today-tab" data-bs-toggle="tab" data-bs-target="#nav-today" type="button" role="tab" aria-controls="nav-today" aria-selected="false">Today List</button>
+          <button class="nav-link" id="nav-task-tab" data-bs-toggle="tab" data-bs-target="#nav-task" type="button" role="tab" aria-controls="nav-task" aria-selected="false">Task List</button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-remember" role="tabpanel" aria-labelledby="nav-remember-tab">
+            <table  class="table table-striped table-hover" id="remember_tb">
+              <tr>
+                <th>German</th>
+                <th>English</th>
+                <th>Notation</th>
+                <th>Freq.</th>
+                <th>Add</th>
+              </tr>
+            </table>
+            <div class='btn-group float-end' role='group' aria-label='Basic mixed styles example'>
+              <button type="button" class="btn btn-dark float-end" type="submit" id="remember_selectall">Select All</button>
+              <button type="button" class="btn btn-warning float-end" type="submit" id="remember_submit">Submit</button>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-today" role="tabpanel" aria-labelledby="nav-today-tab">
+            <table  class="table table-striped table-hover" id="random_tb">
+              <tr>
+                <th>German</th>
+                <th>English</th>
+                <th>Notation</th>
+                <th>Add</th>
+              </tr>
+            </table>
+            <div class='btn-group float-end' role='group' aria-label='Basic mixed styles example'>
+              <button type="button" class="btn btn-dark" type="submit" id="random_selectall">Select All</button>
+              <button type="button" class="btn btn-warning" type="submit" id="random_submit">Submit</button>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-task" role="tabpanel" aria-labelledby="nav-task-tab">
+          <table class="table table-striped table-hover" id="task_tb">
+            <tr>
+              <th>German</th>
+              <th>English</th>
+              <th>Notation</th>
+              <th>Delete/Edit</th>
+            </tr>
+            <!-- <tr name='task_tr_data'>
+            </tr> -->
+          </table>
+          <button type="button" class="btn btn-info float-end" type="submit" id="finishtoday">Finish Today</button>       
+          <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+          
+          <div class="modal fade" id="edit_modal" tabindex="-1" aria-labelledby="edit_modal_label" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="edit_modal_label">Edit</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">German</label>
+                      <input type="text" class="form-control" id="modal_ger">
+                    </div>
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label">English</label>
+                      <input type="text" class="form-control" id="modal_eng">
+                    </div>
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Note</label>
+                      <textarea class="form-control" id="modal_note"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="modal_confirm">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </div>        
+        
+        </div>
+        <!-- <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> -->
+      </div>
+    </div>
+</body>
+</html>
